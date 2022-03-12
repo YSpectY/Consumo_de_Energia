@@ -25,7 +25,7 @@ informacion = {
 consumo_coca_quito=consumo_energia['Coca Codo Sinclair']['Quito']['consumos']
 consumo_coca_guayaquil=consumo_energia['Coca Codo Sinclair']['Guayaquil']['consumos']
 consumo_sopladora_quito=consumo_energia['Sopladora']['Quito']['consumos']
-consumo_sopladora_guayaquil=consumo_energia['Sopladora']['Guayaqil']['consumos']
+consumo_sopladora_guayaquil=consumo_energia['Sopladora']['Guayaquil']['consumos']
 consumo_sopladora_loja=consumo_energia['Sopladora']['Loja']['consumos']
 menu = 1 ; ciudades_ccs = 1 ; ciudades_sopladora = 1
 def consumo_ccs ():
