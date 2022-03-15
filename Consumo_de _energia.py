@@ -22,12 +22,33 @@ informacion = {
  'sierra': ('Quito', 'Ambato', 'Loja'),
  'oriente': ('Tena', 'Nueva Loja')
 }
+energia_ciudad = {
+    'Quito': {
+        'Coca Codo Sinclair':{'Megavatios producidos':(4753)},
+        'Sopladora':{'Megavatios producidos': (5676)}},
+    'Guayaquil': {
+        'Coca Codo Sinclair':{'Megavatios producidos':(920)},
+        'Sopladora':{'Megavatios producidos':(3404)}},
+    'Loja': {
+        'Sopladora':{'Megavatios producidos': (456)}},
+}
+total_ccs_quito= 4753 * 65
+total_ccs_guayaquil = 920 * 84
+total_sopladora_quito = 5676 * 79
+total_sopladora_guayaquil = 3404 * 55
+total_sopladora_loja = 456 * 32
 consumo_coca_quito=consumo_energia['Coca Codo Sinclair']['Quito']['consumos']
 consumo_coca_guayaquil=consumo_energia['Coca Codo Sinclair']['Guayaquil']['consumos']
 consumo_sopladora_quito=consumo_energia['Sopladora']['Quito']['consumos']
 consumo_sopladora_guayaquil=consumo_energia['Sopladora']['Guayaquil']['consumos']
 consumo_sopladora_loja=consumo_energia['Sopladora']['Loja']['consumos']
-menu = 1 ; ciudades_ccs = 1 ; ciudades_sopladora = 1
+ciudades_ccs = ciudades_sopladora = 1
+energia_quito_ccs=energia_ciudad['Quito']['Coca Codo Sinclair']['Megavatios producidos']
+energia_quito_sopladora=energia_ciudad['Quito']['Sopladora']['Megavatios producidos']
+energia_guayaquil_ccs=energia_ciudad['Guayaquil']['Coca Codo Sinclair']['Megavatios producidos']
+energia_guayaquil_sopladora=energia_ciudad['Guayaquil']['Sopladora']['Megavatios producidos']
+energia_loja_sopladora=energia_ciudad['Loja']['Sopladora']['Megavatios producidos']
+
 def consumo_ccs ():
     print('Consumo total de la planta en',ciudades_ccs, 'es de: ' ,consumo , 'MW')
     print('........................................','',sep='\n')
@@ -36,45 +57,117 @@ def consumo_sopladora ():
     print('Consumo total de la planta en',ciudades_sopladora, 'es de: ' ,consumo , 'MW')
     print('........................................','',sep='\n')
 
-while menu != 'Salir':
-    print('Plantas:','Coca Codo Sinclair','Sopladora', sep='\n')
-    menu = input('Escriba el nombre de la planta que desee revisar o Salir para terminar el programa: ')
-    if menu == 'Coca Codo Sinclair':
-        while ciudades_ccs != 'Salir':
-            consumo = 0
-            print('Ciudades:','Guayaquil','Quito', sep='\n')
-            ciudades_ccs = input('Escriba el nombre de la ciudad que desee a revisar o Salir para regresar: ')
-            if ciudades_ccs == 'Guayaquil':
-                for i in consumo_coca_guayaquil:
-                    consumo += i
-                consumo_ccs()
-                break
-            elif ciudades_ccs == 'Quito':
-                for i in consumo_coca_quito:
-                    consumo += i
-                consumo_ccs()
+def err_mayus ():
+    print('Error','Escriba la ciudad con la primera letra en mayuscula','.................................', sep='\n')
+
+consumo = 0
+por = 0
+while por != 'Salir':
+    planta = ciudad = region = 0
+    print('Por que metodo va a realizar','Planta','Ciudad','Region', sep='\n')
+    por = input('Escriba la opcion que desea revisar o escriba Salir para terminar el programa: ')
+    if por == 'Planta':
+        while planta != 'Salir':
+            print('Plantas:','Coca Codo Sinclair','Sopladora', sep='\n')
+            planta = input('Escriba el nombre de la planta que desee revisar o Salir para para regresar: ')
+            if planta == 'Coca Codo Sinclair':
+                ciudades_ccs = 0
+                while ciudades_ccs != 'Salir':
+                    consumo = 0
+                    print('Ciudades:','Guayaquil','Quito', sep='\n')
+                    ciudades_ccs = input('Escriba el nombre de la ciudad que desee a revisar o Salir para regresar: ')
+                    if ciudades_ccs == 'Guayaquil':
+                        for i in consumo_coca_guayaquil:
+                            consumo += i
+                        consumo_ccs()
+                        break
+                    elif ciudades_ccs == 'Quito':
+                        for i in consumo_coca_quito:
+                            consumo += i
+                        consumo_ccs()
+                        break
+                    elif ciudades_ccs == 'Salir':
+                        break
+                    else:
+                        err_mayus()
+            elif planta == 'Sopladora':
+                ciudades_sopladora = 0
+                while ciudades_sopladora != 'Salir':
+                    consumo = 0
+                    print('Ciudades:','Guayaquil','Quito','Loja', sep='\n')
+                    ciudades_sopladora = input('Escriba el nombre de la ciudad que desee a revisar o Salir para regresar: ')
+                    if ciudades_sopladora == 'Guayaquil':
+                        for i in consumo_sopladora_guayaquil:
+                            consumo += i
+                        consumo_sopladora()
+                        break
+                    elif ciudades_sopladora == 'Quito':
+                        for i in consumo_sopladora_quito:
+                            consumo += i
+                        consumo_sopladora()
+                        break
+                    elif ciudades_sopladora == 'Loja':
+                        for i in consumo_sopladora_loja:
+                            consumo += i
+                        consumo_sopladora()
+                        break
+                    elif ciudades_sopladora == 'Salir':
+                        break
+                    else:
+                        err_mayus()
+            elif planta == 'Salir':
                 break
             else:
-                print('Error','Escriba la ciudad con la primera letra en mayuscula','.................................', sep='\n')
-    elif menu == 'Sopladora':
-        while ciudades_sopladora != 'Salir':
-            consumo = 0
+                err_mayus()
+    elif por == 'Ciudad':
+        while ciudad != 'Salir':
             print('Ciudades:','Guayaquil','Quito','Loja', sep='\n')
-            ciudades_sopladora = input('Escriba el nombre de la ciudad que desee a revisar o Salir para regresar: ')
-            if ciudades_sopladora == 'Guayaquil':
-                for i in consumo_sopladora_guayaquil:
-                    consumo += i
-                consumo_sopladora()
+            ciudad = input('Escriba el nombre de la ciudad que desee a revisar o Salir para regresar: ')
+            if ciudad == 'Guayaquil':
+                print('Plantas:','Coca Codo Sinclair','Sopladora', sep='\n')
+                plantas_guayaquil = input('Escriba el nombre de la planta que desee revisar: ')
+                if plantas_guayaquil == 'Coca Codo Sinclair':
+                    print('Megavatios producidos por la planta Coca Codo Sinclair en Guayaquil:',energia_guayaquil_ccs)
+                    break
+                elif plantas_guayaquil == 'Sopladora':
+                    print('Megavatios producidos por la planta Sopladora en Guayaquil:',energia_guayaquil_sopladora)
+                    break
+                else:
+                    err_mayus()
+            elif ciudad == 'Quito':
+                print('Plantas:','Coca Codo Sinclair','Sopladora', sep='\n')
+                plantas_quito = input('Escriba el nombre de la planta que desee revisar : ')
+                if plantas_quito == 'Coca Codo Sinclair':
+                    print('Megavatios producidos por la planta Coca Codo Sinclair en Quito:',energia_quito_ccs)
+                    break
+                elif plantas_quito == 'Sopladora':
+                    print('Megavatios producidos por la planta Sopladora en Quito:',energia_quito_sopladora)
+                    break
+                else:
+                    err_mayus()
+            elif ciudad == 'Loja':
+                print('Megavatios producidos por la planta Sopladora en Loja:',energia_loja_sopladora)
                 break
-            elif ciudades_ccs == 'Quito':
-                for i in consumo_sopladora_quito:
-                    consumo += i
-                consumo_sopladora()
-                break
-            elif ciudades_ccs == 'Loja':
-                for i in consumo_sopladora_loja:
-                    consumo += i
-                consumo_sopladora()
+            elif ciudad == 'Salir': 
                 break
             else:
-                print('Error','Escriba la ciudad con la primera letra en mayuscula','.................................', sep='\n')
+                err_mayus()
+    elif por == 'Region':
+        while region != 'Salir':
+            print('regiones:','Costa','Sierra','Oriente', sep='\n')
+            region = input('Escriba el nombre de la region que desee a revisar o Salir para regresar: ')
+            if region == 'Costa':
+                print('El total recaudado en la costa es de:', total_sopladora_guayaquil+total_ccs_guayaquil)
+            elif region == 'Sierra':
+                print ('El total recaudado en la costa es de:', total_sopladora_quito+total_ccs_quito+total_sopladora_loja)
+            elif region == 'Oriente':
+                print('No existen datos para el oriente')
+                break
+            elif region == 'Salir':
+                break
+            else:
+                err_mayus()
+    elif por == 'Salir':
+        break
+    else:
+        err_mayus()
