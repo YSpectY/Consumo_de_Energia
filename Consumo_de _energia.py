@@ -124,27 +124,13 @@ while por != 'Salir':
             print('Ciudades:','Guayaquil','Quito','Loja', sep='\n')
             ciudad = input('Escriba el nombre de la ciudad que desee a revisar o Salir para regresar: ')
             if ciudad == 'Guayaquil':
-                print('Plantas:','Coca Codo Sinclair','Sopladora', sep='\n')
-                plantas_guayaquil = input('Escriba el nombre de la planta que desee revisar: ')
-                if plantas_guayaquil == 'Coca Codo Sinclair':
-                    print('Megavatios producidos por la planta Coca Codo Sinclair en Guayaquil:',energia_guayaquil_ccs)
-                    break
-                elif plantas_guayaquil == 'Sopladora':
-                    print('Megavatios producidos por la planta Sopladora en Guayaquil:',energia_guayaquil_sopladora)
-                    break
-                else:
-                    err_mayus()
+                print('Megavatios producidos por la planta Coca Codo Sinclair en Guayaquil:',energia_guayaquil_ccs)
+                print('Megavatios producidos por la planta Sopladora en Guayaquil:',energia_guayaquil_sopladora)
+                break
             elif ciudad == 'Quito':
-                print('Plantas:','Coca Codo Sinclair','Sopladora', sep='\n')
-                plantas_quito = input('Escriba el nombre de la planta que desee revisar : ')
-                if plantas_quito == 'Coca Codo Sinclair':
-                    print('Megavatios producidos por la planta Coca Codo Sinclair en Quito:',energia_quito_ccs)
-                    break
-                elif plantas_quito == 'Sopladora':
-                    print('Megavatios producidos por la planta Sopladora en Quito:',energia_quito_sopladora)
-                    break
-                else:
-                    err_mayus()
+                print('Megavatios producidos por la planta Coca Codo Sinclair en Quito:',energia_quito_ccs)
+                print('Megavatios producidos por la planta Sopladora en Quito:',energia_quito_sopladora)
+                break
             elif ciudad == 'Loja':
                 print('Megavatios producidos por la planta Sopladora en Loja:',energia_loja_sopladora)
                 break
