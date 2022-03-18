@@ -46,14 +46,14 @@ def total_consumo_por_planta_ciudad(planta, ciudad):
 
 def total_consumo_ciudad_C(ciudad):
     if ciudad not in consumo_energia['Coca Codo Sinclair'].keys():
-        return 'No hay planta de Coca Codo Sinclair en la ciudad de:' + ciudad
+        return 'No hay planta de Coca Codo Sinclair en la ciudad de ' + ciudad
 
     total_consumo_por_ciudad = sum(consumo_energia['Coca Codo Sinclair'][ciudad]['consumos'])
     print( 'El consumo de energía de la planta Coca Codo Sinclair en la ciudad de',ciudad,'es de',total_consumo_por_ciudad,"MWh")
 
 def total_consumo_ciudad_S(ciudad):
     if ciudad not in consumo_energia['Sopladora'].keys():
-        return 'No hay planta de Sopladora en:' + ciudad
+        return 'No hay planta de Sopladora en la ciudad de ' + ciudad
 
     total_consumo_por_ciudad = sum(consumo_energia['Sopladora'][ciudad]['consumos'])
     print( 'El consumo de energía de la planta Sopladora en la ciudad de',ciudad,'es de',total_consumo_por_ciudad,"MWh")
@@ -72,8 +72,8 @@ while op != 0:
         else:
             print(total)
     elif op == 2:
-        print('-Total de Energia por Ciudad-')
-        ciudad = input('Ingrese el nombre de la Ciudad: ', 'En las siguientes ciudades', 'Guayaquil', 'Quito', 'Manta', 'Loja', 'Tena', sep='\n')
+        print('-Total de Energia por Ciudad-', 'En las siguientes ciudades', 'Guayaquil', 'Quito', 'Manta', 'Loja', 'Tena', sep='\n')
+        ciudad = input('Ingrese el nombre de la Ciudad: ')
         totalC = total_consumo_ciudad_C(ciudad)
         totalS = total_consumo_ciudad_S(ciudad)
         if type(totalC and totalS)==int:
