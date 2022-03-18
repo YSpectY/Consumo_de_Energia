@@ -45,30 +45,27 @@ def total_consumo_por_planta_ciudad(planta, ciudad):
     return total_consumo_en_planta
 
 def total_consumo_ciudad_C(ciudad):
-      
     if ciudad not in consumo_energia['Coca Codo Sinclair'].keys():
-        return 'No hay planta de Coca Codo Sinclair en:' + ciudad
+        return 'No hay planta de Coca Codo Sinclair en la ciudad de:' + ciudad
 
     total_consumo_por_ciudad = sum(consumo_energia['Coca Codo Sinclair'][ciudad]['consumos'])
-    print( 'El consumo de energía de la planta Coca Codo Sinclair en la ciudad de',ciudad,total_consumo_por_ciudad,"MWh")
+    print( 'El consumo de energía de la planta Coca Codo Sinclair en la ciudad de',ciudad,'es de',total_consumo_por_ciudad,"MWh")
 
 def total_consumo_ciudad_S(ciudad):
     if ciudad not in consumo_energia['Sopladora'].keys():
         return 'No hay planta de Sopladora en:' + ciudad
 
     total_consumo_por_ciudad = sum(consumo_energia['Sopladora'][ciudad]['consumos'])
-    print( 'El consumo de energía de la planta Sopladora en la ciudad de',ciudad,total_consumo_por_ciudad,"MWh")
+    print( 'El consumo de energía de la planta Sopladora en la ciudad de',ciudad,'es de',total_consumo_por_ciudad,"MWh")
 
 op = -1
 while op != 0:
-
-    print('--------------------------------------------------','<1> Total de energía consumida por planta y ciudad','<2> Total de Energia por Ciudad ','<3> Dinero Recaudado por Region ','<0> Salir', sep='\n')
-
-    op = int(input('Ingrese opción:'))
+    print('--------------------------------------------------','<1> Total de energía consumida por Planta y Ciudad','<2> Total de Energia por Ciudad ','<3> Dinero Recaudado por Region ','<0> Salir', sep='\n')
+    op = int(input('Ingrese una opción:'))
     if op == 1:
-        print('-Total de energía consumida en una ciudad y una planta especifica-')
-        planta = input('Ingrese el nombre de la planta:')
-        ciudad = input('Ingrese el nombre de la ciudad:')
+        print('-Total de Energía Consumida en una Ciudad y una Planta Especifica-')
+        planta = input('Ingrese el nombre de la Planta: ')
+        ciudad = input('Ingrese el nombre de la Ciudad: ')
         total = total_consumo_por_planta_ciudad(planta, ciudad)
         if type(total) == int:
             print('El consumo de energía en la ciudad de {} fue de {} MWh en la planta {}'.format(ciudad, total, planta))
@@ -76,7 +73,7 @@ while op != 0:
             print(total)
     elif op == 2:
         print('-Total de Energia por Ciudad-')
-        ciudad = input('Ingrese el nombre de la ciudad:', 'En las siguientes ciudades', 'Guayaquil', 'Quito', 'Manta', 'Loja', 'Tena', sep='\n')
+        ciudad = input('Ingrese el nombre de la Ciudad: ', 'En las siguientes ciudades', 'Guayaquil', 'Quito', 'Manta', 'Loja', 'Tena', sep='\n')
         totalC = total_consumo_ciudad_C(ciudad)
         totalS = total_consumo_ciudad_S(ciudad)
         if type(totalC and totalS)==int:
@@ -86,7 +83,7 @@ while op != 0:
             print(totalC)
             print(totalS)
     elif op == 3:
-        print('-Total por región-', 'En las siguientes regiones', 'Costa', 'Sierra', 'Oriente', sep='\n')
-        region = input('Ingrese región:')
+        print('-Total por Región-', 'En las siguientes regiones', 'Costa', 'Sierra', 'Oriente', sep='\n')
+        region = input('Ingrese región: ')
         total = total_por_region(region)
         print(region, ':', total, '\n')
